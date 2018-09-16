@@ -1,10 +1,9 @@
 <html>
 
     <head bgcolor="337ab7">
-        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
-    <body>
+    <body bgcolor="pink">
         <table width="100%" bgcolor="337ab7">
             <tbody>
                 <tr>
@@ -24,30 +23,6 @@
                 </tr>
             </tbody>
         </table>
-        <!--Questions-->
-        <p id="1"></p>
-        <p id="2"></p>
-        <p id="3"></p>
-        <p id="4"></p>
-        <p id="5"></p>
-        <p id="6"></p>
-        <p id="7"></p>
-        <p id="8"></p>
-        <p id="9"></p>
-        <p id="10"></p>
-        <!--Answers-->
-        <p id="11"></p>
-        <p id="12"></p>
-        <p id="13"></p>
-        <p id="14"></p>
-        <p id="15"></p>
-        <p id="16"></p>
-        <p id="17"></p>
-        <p id="18"></p>
-        <p id="19"></p>
-        <p id="20"></p>
-
-
 
         <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
         <script>
@@ -71,24 +46,22 @@
                 const foodQuestions = await questionsRef.doc(key).get();
                 const foodAnswers = await answersRef.doc(key).get();
 
-
-                var i;
-                for (i = 1; i < 11; i++) {
-                    document.getElementById(i).innerHTML = foodQuestions.data().questions[i - 1];
-                }
-
-                var j;
-                for (j = 11; j < 21; j++) {
-                    document.getElementById(j).innerHTML = foodAnswers.data().answers[j - 11];
-                }
-
-
                 console.log("Questions:", foodQuestions.data().questions);
                 console.log("Answers:", foodAnswers.data().answers);
+                
+                let i = 0;
+                for(; i < foodQuestions.data().questions.length ; i++){
+                    let question = foodQuestions.data().questions[i];
+                    let correctAnswer = foodAnswers.data().answers[i];
+
+                    let wrongAnswers = [];
+                    for (let i = 0; i < 3; i++){
+                        const randomIndex = Math.floor(Math.random() * foodQuestions.data().questions.length);
+                        wrongAnswers.push(foodQuestions.data().questions[randomIndex]);
+                    }
+                    
+                }
             })();
-
-
-
 
         </script>
     </body>
