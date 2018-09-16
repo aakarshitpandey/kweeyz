@@ -1,0 +1,14 @@
+.row {
+	margin: 10px;
+}
+.button {
+	margin: 10px;
+}
+body {
+	background-color: white;
+}
+h1 {
+	background-color: #337ab7;
+	height: 50px;
+	color: white;
+}
