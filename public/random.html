@@ -1,58 +1,93 @@
 <html>
 
     <head bgcolor="337ab7">
-        <link rel=" icon"="" href="logo.png" sizes="16x16" type="image/png">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Random Questions</title>
     </head>
 
     <body>
-        <center>
-            <table width="100%" bgcolor="337ab7">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="logo.png">
+        <table width="100%" bgcolor="337ab7">
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="logo.png">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <title> Kweeyz Food
-            </title>
+        <h1>Random Questions</h1>
 
-            <table border="1" width=100% align="center">
-                <tbody>
-                    <tr>
-                        <td width=50%>
-                            <font size="24" face="Times New Roman" color="black">
-                                <center> Food:
-                            </font>
-                        </td>
-                        <td>
-                            <table border="1">
-                                <br>
-                                <center> Questions<br>
-                            </table>
-                            <table width=100% border="1">
-                                <tr>
-                                    <output>
-                                        < </tr> </table> <table border="4">
-                                            h1
-                            </table>
-                            </output>
-                        </td>
+        <p id="1" class="question"></p>
+        <div class="button"><button id="11" type="button" class="btn btn-info"></button></div>
+        <p id="2" class="question"></p>
+        <div class="button"><button id="12" type="button" class="btn btn-info"></button></div>
+        <p id="3" class="question"></p>
+        <div class="button"><button id="13" type="button" class="btn btn-info"></button></div>
+        <p id="4" class="question"></p>
+        <div class="button"><button id="14" type="button" class="btn btn-info"></button></div>
+        <p id="5" class="question"></p>
+        <div class="button"><button id="15" type="button" class="btn btn-info"></button></div>
+        <p id="6" class="question"></p>
+        <div class="button"><button id="16" type="button" class="btn btn-info"></button></div>
+        <p id="7" class="question"></p>
+        <div class="button"><button id="17" type="button" class="btn btn-info"></button></div>
+        <p id="8" class="question"></p>
+        <div class="button"><button id="18" type="button" class="btn btn-info"></button></div>
+        <p id="9" class="question"></p>
+        <div class="button"><button id="19" type="button" class="btn btn-info"></button></div>
+        <p id="10" class="question"></p>
+        <div class="button"><button id="20" type="button" class="btn btn-info"></button></div>
 
 
-                    </tr>
-                </tbody>
-            </table>
-        </center>
+
+        <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyAJyV8taLgT06RAcFoI74XMjc6q8H1ceKs",
+                authDomain: "quizzo-b3a77.firebaseapp.com",
+                databaseURL: "https://quizzo-b3a77.firebaseio.com",
+                projectId: "quizzo-b3a77",
+                storageBucket: "quizzo-b3a77.appspot.com",
+                messagingSenderId: "129501553627"
+            };
+            firebase.initializeApp(config);
+            const db = firebase.firestore();
+            db.settings({ timestampsInSnapshots: true });
+            const questionsRef = db.collection("questions");
+            const answersRef = db.collection("answers");
+            const key = "Ice Breaker";
+            (async () => {
+                const randQuestions = await questionsRef.doc(key).get();
+                const randAnswers = await answersRef.doc(key).get();
+                var i;
+                for (i = 1; i < 11; i++) {
+                    document.getElementById(i).innerHTML = randQuestions.data().questions[i - 1];
+                }
+                var j;
+                for (j = 11; j < 21; j++) {
+                    document.getElementById(j).innerHTML = randAnswers.data().answers[j - 11];
+                }
+                console.log("Questions:", randQuestions.data().questions);
+                console.log("Answers:", randAnswers.data().answers);
+                let k = 0;
+                for (; k < randQuestions.data().questions.length; k++) {
+                    let question = randQuestions.data().questions[k];
+                    let correctAnswer = randAnswers.data().answers[k];
+                    let wrongAnswers = [];
+                    for (let k = 0; i < 3; k++) {
+                        const randomIndex = Math.floor(Math.random() * randQuestions.data().questions.length);
+                        wrongAnswers.push(randQuestions.data().questions[randomIndex]);
+                    }
+               
+                }
+            })();
+        
+        </script>
     </body>
 
 </html>
