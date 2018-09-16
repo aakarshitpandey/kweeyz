@@ -79,13 +79,13 @@
                     let question = geogQuestions.data().questions[k];
                     let correctAnswer = geogAnswers.data().answers[k];
                     let wrongAnswers = [];
-                    for (let k = 0; i < 3; k++) {
+                    for (let k = 0; k < 3; k++) {
                         const randomIndex = Math.floor(Math.random() * geogQuestions.data().questions.length);
                         wrongAnswers.push(geogQuestions.data().questions[randomIndex]);
                     }
                 }
             })();
-        
+
         </script>
     </body>
 
