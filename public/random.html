@@ -1,96 +1,58 @@
 <html>
 
     <head bgcolor="337ab7">
+        <link rel=" icon"="" href="logo.png" sizes="16x16" type="image/png">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <title>Random Questions</title>
     </head>
 
     <body>
-        <table width="100%" bgcolor="337ab7">
-            <tbody>
-                <tr>
-                    <td>
-                        <img src="logo.png">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <center>
+            <table width="100%" bgcolor="337ab7">
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="logo.png">
 
-        <h1>Random Questions</h1>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                            <p>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <title> Kweeyz Food
+            </title>
 
-        <p id="1" class="question"></p>
-        <p id="11" class="answer"></p>
-        <p id="2" class="question"></p>
-        <p id="12" class="answer"></p>
-        <p id="3" class="question"></p>
-        <p id="13" class="answer"></p>
-        <p id="4" class="question"></p>
-        <p id="14" class="answer"></p>
-        <p id="5" class="question"></p>
-        <p id="15" class="answer"></p>
-        <p id="6" class="question"></p>
-        <p id="16" class="answer"></p>
-        <p id="7" class="question"></p>
-        <p id="17" class="answer"></p>
-        <p id="8" class="question"></p>
-        <p id="18" class="answer"></p>
-        <p id="9" class="question"></p>
-        <p id="19" class="answer"></p>
-        <p id="10" class="question"></p>
-        <p id="20" class="answer"></p>
-
-
-
-        <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyAJyV8taLgT06RAcFoI74XMjc6q8H1ceKs",
-                authDomain: "quizzo-b3a77.firebaseapp.com",
-                databaseURL: "https://quizzo-b3a77.firebaseio.com",
-                projectId: "quizzo-b3a77",
-                storageBucket: "quizzo-b3a77.appspot.com",
-                messagingSenderId: "129501553627"
-            };
-            firebase.initializeApp(config);
-            const db = firebase.firestore();
-            db.settings({ timestampsInSnapshots: true });
-            const questionsRef = db.collection("questions");
-            const answersRef = db.collection("answers");
-
-            const key = "Food";
-            (async () => {
-                const foodQuestions = await questionsRef.doc(key).get();
-                const foodAnswers = await answersRef.doc(key).get();
-
-                var i;
-                for (i = 1; i < 11; i++) {
-                    document.getElementById(i).innerHTML = foodQuestions.data().questions[i - 1];
-                }
-                var j;
-                for (j = 11; j < 21; j++) {
-                    document.getElementById(j).innerHTML = foodAnswers.data().answers[j - 11];
-                }
-
-                console.log("Questions:", foodQuestions.data().questions);
-                console.log("Answers:", foodAnswers.data().answers);
+            <table border="1" width=100% align="center">
+                <tbody>
+                    <tr>
+                        <td width=50%>
+                            <font size="24" face="Times New Roman" color="black">
+                                <center> Food:
+                            </font>
+                        </td>
+                        <td>
+                            <table border="1">
+                                <br>
+                                <center> Questions<br>
+                            </table>
+                            <table width=100% border="1">
+                                <tr>
+                                    <output>
+                                        < </tr> </table> <table border="4">
+                                            h1
+                            </table>
+                            </output>
+                        </td>
 
 
-                let k = 0;
-                for (; k < foodQuestions.data().questions.length; k++) {
-                    let question = foodQuestions.data().questions[k];
-                    let correctAnswer = foodAnswers.data().answers[k];
-
-                    let wrongAnswers = [];
-                    for (let k = 0; i < 3; k++) {
-                        const randomIndex = Math.floor(Math.random() * foodQuestions.data().questions.length);
-                        wrongAnswers.push(foodQuestions.data().questions[randomIndex]);
-                    }
-
-                }
-            })();
-
-        </script>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
     </body>
 
 </html>

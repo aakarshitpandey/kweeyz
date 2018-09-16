@@ -13,3 +13,7 @@ h1 {
 	color: white;
 	font-family: sans-serif;
 }
+p {
+	font-size: 14pt;
+	padding-left: 10px;
+}
